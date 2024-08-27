@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angel-Martinez</title>
+</head>
+<body>
+    <p id="respuesta"></p>
+    <script>
+        // 1. ¿Qué es JavaScript y en qué se asemeja a Java?
+        document.getElementById("respuesta").innerHTML = "JavaScript es un lenguaje de programación utilizado principalmente para crear interfaces de usuario interactivas. Aunque tiene un nombre similar a Java, son lenguajes diferentes. JavaScript se ejecuta en el navegador web, mientras que Java se ejecuta en una máquina virtual. Ambos son lenguajes orientados a objetos, pero JavaScript es más dinámico y flexible.";
+
+        // 2. Operaciones con "var"
+        var num1 = 20;
+        var num2 = 10;
+        console.log("Suma:", num1 + num2);
+        console.log("Resta:", num1 - num2);
+        console.log("Multiplicación:", num1 * num2);
+        console.log("División:", num1 / num2);
+
+        // 3. Concatenación con "let"
+        let saludo = "Que Xopa";
+        let nombre = "Mi Gente";
+        console.log(saludo + " " + nombre);
+
+        // 4. Tipo de dato de "const"
+        const PI = 3.14159;
+        console.log(typeof PI);
+
+        // 5. Objeto con diferentes tipos de datos
+        const persona = {
+            edad: 30,
+            nombre: "Juan",
+            esEstudiante: true,
+            mascotas: {}
+        };
+
+        // 6. Función para sumar múltiplos de 3 o 5
+        function sumaMultiplos(num) {
+            let suma = 0;
+            for (let i = 0; i < num; i++) {
+                if (i % 3 === 0 || i % 5 === 0) {
+                    suma += i;
+                }
+            }
+            return suma;
+        }
+        console.log(sumaMultiplos(10));
+    </script>
+</body>
+</html>
