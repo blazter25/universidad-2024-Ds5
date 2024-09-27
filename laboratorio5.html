@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lo Que Escribas Ira Alrevez</title>
+</head>
+<body>
+    <h1> ESCRIBE ALGO AQUI: </h1>
+    <input type="text" id="entrada" placeholder="Puede que no sirva">
+    <span id="resultado"></span>
+    <select id="colorSelector">
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+        <option value="green">Verde</option>
+        <option value="purple">Morado</option>
+        <option value="orange">Naranja</option>
+        <option value="pink">Rosa</option>
+        <option value="yellow">Amarillo</option>
+        <option value="black">Negro</option>
+        <option value="white">Blanco</option>
+    </select>
+
+    <script>
+        const entrada = document.getElementById('entrada');
+        const resultado = document.getElementById('resultado');
+        const colorSelector = document.getElementById('colorSelector');
+
+        entrada.addEventListener('input', () => {
+            const textoInvertido = entrada.value.split('').reverse().join('');
+            resultado.textContent = textoInvertido;
+            resultado.style.color = colorSelector.value;
+        });
+
+        colorSelector.addEventListener('change', () => {
+            resultado.style.color = colorSelector.value;
+        });
+    </script>
+</body>
+</html>
