@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Votación</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Sistema de Votación</h1>
+
+    <div id="form-container">
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="color" id="color">
+        <button onclick="agregarCandidato()">Agregar</button>
+    </div>
+
+    <table id="tabla-candidatos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Votos</th>
+                <th>Porcentaje</th>
+                <th>Acciones</th> <!-- Nueva columna para las acciones -->
+            </tr>
+        </thead>
+        <tbody id="tbody-candidatos">
+        </tbody>
+    </table>
+
+    <script>
+        const candidatos = [];
+        const tbody = document.getElementById('tbody-candidatos');
+
+        function agregarCandidato() {
+            const nombre = document.getElementById('nombre').value;
+            const color = document.getElementById('color').value;
+
+            candidatos.push({ nombre, color, votos: 0 });
+            mostrarCandidatos();
+        }
+
+        function votar(indice) {
+            candidatos[indice].votos += 1;
+            mostrarCandidatos();
+        }
+
+        function mostrarCandidatos() {
+            tbody.innerHTML = '';
+            const totalVotos = candidatos.reduce((acc, candidato) => acc + candidato.votos, 0);
+
+            candidatos.forEach((candidato, indice) => {
+                const porcentaje = totalVotos > 0 ? ((candidato.votos / totalVotos) * 100).toFixed(2) : 0;
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${candidato.nombre}</td>
+                    <td style="background-color: ${candidato.color}"></td>
+                    <td>${candidato.votos}</td>
+                    <td>${porcentaje}%</td>
+                    <td><button onclick="votar(${indice})">Votar</button></td> <!-- Botón de votar -->
+                `;
+                tbody.appendChild(fila);
+            });
+        }
+    </script>
+</body>
+</html>
